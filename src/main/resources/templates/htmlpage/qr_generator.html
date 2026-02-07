@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>QR Code Generator</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;display:flex;align-items:flex-start;gap:2rem;padding:2rem;background:#f7f7fb;color:#111}
+    .card{background:#fff;padding:1.25rem;border-radius:12px;box-shadow:0 6px 18px rgba(40,40,80,0.06);width:420px}
+    label{display:block;font-size:0.85rem;margin:0.4rem 0 0.2rem}
+    input[type=text], select{width:100%;padding:0.5rem;border-radius:8px;border:1px solid #e6e6f0}
+    .controls{display:flex;gap:0.6rem;margin-top:0.5rem}
+    button{padding:0.6rem 0.9rem;border-radius:8px;border:0;background:#3b82f6;color:white;cursor:pointer}
+    button.secondary{background:#efefef;color:#111}
+    .preview{display:flex;flex-direction:column;align-items:center;gap:1rem}
+    .meta{font-size:0.9rem;color:#555}
+    .colors{display:flex;gap:0.5rem;align-items:center}
+    .small{font-size:0.85rem;padding:0.35rem}
+    footer{margin-top:1rem;font-size:0.8rem;color:#666}
+  </style>
+  <!-- QRious library (produces canvas) -->
+  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+</head>
+<body>
+  <div class="card">
+    <h2>QR Code Generator</h2>
+    <label for="text">Text / URL / UPI / Any data</label>
+    <input id="text" type="text" placeholder="https://example.com or plain text" value="https://www.example.com">
+
+    <div class="controls" style="margin-top:0.7rem">
+      <div style="flex:1">
+        <label for="size">Size (px)</label>
+        <select id="size" class="small">
+          <option>128</option>
+          <option selected>256</option>
+          <option>384</option>
+          <option>512</option>
+        </select>
+      </div>
+      <div style="width:110px">
+        <label for="ec">Error correction</label>
+        <select id="ec" class="small">
+          <option value="L">L (Low)</option>
+          <option value="M" selected>M (Medium)</option>
+          <option value="Q">Q (Quartile)</option>
+          <option value="H">H (High)</option>
+        </select>
+      </div>
+    </div>
+
+    <label style="margin-top:0.6rem">Colors</label>
+    <div class="colors">
+      <div>
+        <div class="meta">Foreground</div>
+        <input id="fg" type="color" value="#111111">
+      </div>
+      <div>
+        <div class="meta">Background</div>
+        <input id="bg" type="color" value="#ffffff">
+      </div>
+      <div style="margin-left:auto;align-self:flex-end">
+        <button id="generate" class="small">Generate</button>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:1rem;align-items:center;margin-top:1rem">
+      <div class="preview">
+        <canvas id="qrcanvas"></canvas>
+        <div class="meta">Right-click the image to save, or use the download button.</div>
+      </div>
+      <div style="flex:1">
+        <div style="display:flex;flex-direction:column;gap:0.5rem">
+          <button id="download">Download PNG</button>
+          <button id="printBtn" class="secondary">Print QR Code</button>
+          <button id="copy" class="secondary">Copy Image to Clipboard</button>
+          <button id="showData" class="secondary">Show Data (raw)</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>Works fully offline — open this file in your browser. Supports URLs, text, UPI, contact text, etc.
+
+    </footer>
+  </div>
+
+  <script>
+
+		  const urlParams = new URLSearchParams(window.location.search);
+		  const encodedData = urlParams.get('data');
+		  const jString=  JSON.parse(decodeURIComponent(encodedData))
+
+       // const urlParams = new URLSearchParams(window.location.search); 
+       // const jString = JSON.parse(urlParams.get('data'));
+        console.log("url is2 : " ,jString.sku);
+    // Create QRious instance bound to the canvas
+        document.getElementById('text').value=JSON.stringify(jString);
+    
+    const qr = new QRious({
+      element: document.getElementById('qrcanvas'),
+      // value: document.getElementById('text').value,
+      value: JSON.stringify(jString.rcode) ,
+      size: parseInt(document.getElementById('size').value, 10),
+      level: document.getElementById('ec').value,
+      background: document.getElementById('bg').value,
+      foreground: document.getElementById('fg').value
+    });
+
+    function generate() {
+      // const value = document.getElementById('text').value.trim();
+      const value = JSON.stringify(jString.rcode);
+      if(!value){
+        alert('Please enter some text or a URL to encode.');
+        return;
+      }
+      qr.value = value;
+      qr.size = parseInt(document.getElementById('size').value, 10);
+      qr.level = document.getElementById('ec').value;
+      qr.background = document.getElementById('bg').value;
+      qr.foreground = document.getElementById('fg').value;
+    }
+
+    document.getElementById('generate').addEventListener('click', generate);
+
+    // Generate on enter in the text box
+    document.getElementById('text').addEventListener('keydown', function(e){
+      if(e.key === 'Enter') generate();
+    });
+
+    // Download as PNG
+    document.getElementById('download').addEventListener('click', function(){
+      const canvas = document.getElementById('qrcanvas');
+      const url = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'qr-code.png';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    });
+
+    // Copy image to clipboard (modern browsers)
+    document.getElementById('copy').addEventListener('click', async function(){
+      try{
+        const canvas = document.getElementById('qrcanvas');
+        canvas.toBlob(async function(blob){
+          await navigator.clipboard.write([new ClipboardItem({'image/png': blob})]);
+          alert('Image copied to clipboard');
+        });
+      }catch(err){
+        alert('Copy failed: ' + err);
+      }
+    });
+
+    // Show raw data
+    document.getElementById('showData').addEventListener('click', function(){
+      alert('QR data:\n\n' + qr.value);
+    });
+
+
+
+    // Print QR code
+document.getElementById('printBtn').addEventListener('click', printQr);
+
+    function printQr() {
+      const canvas = document.getElementById('qrcanvas');
+      const dataUrl = canvas.toDataURL('image/png');
+
+      console.log("url is3 : " ,jString.sellingPrice);
+
+        window.open(dataUrl, dataUrl).document.write(`
+                      
+                     
+                         
+                            <div style="text-align:center;">
+                              <h3>QR Code</h3>
+                              <img src=${dataUrl} style="max-width:100%;">
+                              <h3> Name : ${jString.name}  </h3>
+                              <h5> Id  : ${jString.sku}  </h5>
+                               <h3> Rs : ${jString.price}  /- </h3>
+                            </div>                    
+                        `);
+        //  alert('Print functionality is not implemented yet.');
+    }
+    // Print QR code
+    
+    window.addEventListener('load', generate);
+
+
+
+
+
+   </script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blinkit-style Mobile-first UI</title>
+  <style>
+    :root{
+      --purple:#3b0f6f;
+      --purple-2:#4d0f8a;
+      --teal:#0f766e;
+      --muted:#9aa0a6;
+      --card:#0f1724;
+      --surface:#0b1220;
+      --accent:#2ecc71;
+      --glass: rgba(255,255,255,0.06);
+      --radius:14px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color-scheme: light dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:#0b0d10;color:#fff}
+
+    /* Top header like app */
+    .topbar{background:linear-gradient(180deg,var(--purple),#2b0b4b);padding:20px;border-bottom-left-radius:20px;border-bottom-right-radius:20px}
+    .top-row{display:flex;align-items:center;justify-content:space-between}
+    .time{font-size:38px;font-weight:800;line-height:1}
+    .sub{font-size:13px;color:rgba(255,255,255,0.85)}
+    .location{font-size:13px;color:rgba(255,255,255,0.85);margin-top:8px}
+
+    .search-wrap{margin-top:14px;display:flex;gap:10px}
+    .search{flex:1;background:rgba(255,255,255,0.06);padding:12px;border-radius:12px;display:flex;align-items:center;gap:10px}
+    .search input{background:transparent;border:0;outline:0;color:#fff;font-size:15px;flex:1}
+    .mic{width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center}
+
+    /* categories */
+    .cats{display:flex;gap:14px;padding:12px 18px;margin-top:8px;overflow:auto}
+    .cat{min-width:72px;background:rgba(255,255,255,0.03);padding:12px;border-radius:12px;text-align:center;flex-shrink:0}
+    .cat svg{display:block;margin:0 auto 6px}
+    .cat p{margin:0;font-size:13px;color:rgba(255,255,255,0.9)}
+
+    /* hero banner */
+    .hero{margin:12px 16px;border-radius:14px;overflow:hidden;position:relative}
+    .hero img{width:100%;height:170px;object-fit:cover;display:block}
+    .hero .cta{position:absolute;left:18px;top:18px;background:rgba(0,0,0,0.25);padding:10px 14px;border-radius:10px}
+
+    /* frequently bought grid */
+    .section{padding:18px}
+    .section h3{margin:0 0 12px 0;font-size:20px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .fcard{background:#064245;padding:10px;border-radius:14px;text-align:center;color:#e6fff6}
+    .fcard img{width:48px;height:48px;object-fit:contain;margin:0 auto 6px}
+    .fcard .more{font-size:11px;background:rgba(0,0,0,0.12);padding:4px 6px;border-radius:8px;display:inline-block;margin-bottom:6px}
+    .fcard p{margin:0;font-weight:700}
+
+    /* floating view cart pill */
+    .view-cart{position:fixed;left:50%;transform:translateX(-50%);bottom:78px;background:linear-gradient(90deg,#2ca84a,#1f8f3f);padding:12px 18px;border-radius:30px;display:flex;gap:12px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,0.4)}
+    .view-cart img{width:44px;height:44px;border-radius:8px;background:#fff;padding:6px}
+    .view-cart .txt{color:#fff}
+
+    /* bottom nav */
+    .bottom-nav{position:fixed;left:0;right:0;bottom:0;background:#0e1418;padding:10px 6px;border-top-left-radius:14px;border-top-right-radius:14px;display:flex;justify-content:space-around;align-items:center}
+    .nav-item{display:flex;flex-direction:column;align-items:center;color:#9aa0a6;font-size:12px}
+    .nav-item svg{margin-bottom:4px}
+
+    /* responsive tweaks */
+    @media (min-width:900px){
+      body{background:#f6f7fb;color:#111}
+      .topbar{border-radius:0}
+      .hero img{height:300px}
+      .grid{grid-template-columns:repeat(4,1fr)}
+      .view-cart{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="top-row">
+      <div>
+        <div style="color:rgba(255,255,255,0.85);font-size:13px;font-weight:700">Blinkit in</div>
+        <div class="time">9 <span style="font-size:18px;">minutes</span></div>
+        <div class="location">HOME - Krushna, Shiv Shrusti ▾</div>
+      </div>
+      <div style="text-align:right">
+        <div style="background:rgba(255,255,255,0.06);padding:6px 10px;border-radius:12px;font-weight:700">₹300</div>
+        <div id="profid_U5647" style="margin-top:8px;width:44px;height:44px;border-radius:22px;background:#fff;display:inline-block"> 
+
+        </div>
+      </div>
+    </div>
+
+    <div class="search-wrap">
+      <div class="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <input placeholder='Search "20000 mah powerbank"' />
+      </div>
+      <div class="mic">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 1v11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 11a7 7 0 0 1-14 0" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="cats" aria-hidden>
+    <div class="cat">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 7h18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      <p>All</p>
+    </div>
+    <div class="cat">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#fff" stroke-width="2"/></svg>
+      <p>Wedding</p>
+    </div>
+    <div class="cat">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2v20" stroke="#fff" stroke-width="2"/></svg>
+      <p>Winter</p>
+    </div>
+    <div class="cat">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#fff" stroke-width="2"/></svg>
+      <p>Electronics</p>
+    </div>
+    <div class="cat">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="#fff" stroke-width="2"/></svg>
+      <p>Beauty</p>
+    </div>
+  </div>
+
+  <div class="hero">
+    <img src="/mnt/data/a9c19c36-6a32-492e-bb2f-abe5be43f073.jpg" alt="hero banner"/>
+    <div class="cta">
+      <div style="font-weight:800">Amul</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.9)">Protein Blueberry Shake — Shop now</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Frequently bought</h3>
+    <div class="grid" id="freqGrid">
+      <!-- cards injected by JS -->
+    </div>
+  </div>
+
+  <div class="view-cart" id="viewCart" onclick="openCart()">
+    <img src="https://i.imgur.com/Yv4hM6g.png" alt="item" />
+    <div class="txt">
+      <div style="font-weight:800">View cart</div>
+      <div style="font-size:13px;opacity:0.95">1 item</div>
+    </div>
+    <div style="margin-left:12px;font-weight:700">›</div>
+  </div>
+
+  <div class="bottom-nav">
+    <div class="nav-item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="#9aa0a6" stroke-width="1.5"/></svg>
+      <div>Home</div>
+    </div>
+    <div class="nav-item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2v20" stroke="#9aa0a6" stroke-width="1.5"/></svg>
+      <div>Order Again</div>
+    </div>
+    <div class="nav-item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="#9aa0a6" stroke-width="1.5"/><path d="M6 20c1-4 7-4 12 0" stroke="#9aa0a6" stroke-width="1.5"/></svg>
+      <div>Categories</div>
+    </div>
+    <div class="nav-item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="14" rx="2" stroke="#9aa0a6" stroke-width="1.5"/></svg>
+      <div>Profile</div>
+    </div>
+  </div>
+
+  <script>
+    // sample frequently bought items (replace with real product images)
+    const frequent = [
+      {title:'Oil, Ghee & Masala',imgs:['https://i.imgur.com/1Q9Z1Zz.png']},
+      {title:'Bread, Butter & Eggs',imgs:['https://i.imgur.com/6Iej2c3.png']},
+      {title:'Vegetables & Fruits',imgs:['https://i.imgur.com/DO7Yw2G.png']},
+      {title:'Milk, Curd & Paneer',imgs:['https://i.imgur.com/Yv4hM6g.png']},
+      {title:'Cakes & Biscuits',imgs:['https://i.imgur.com/2nCt3Sbl.png']},
+      {title:'Rajma, Chole & Dal',imgs:['https://i.imgur.com/1Q9Z1Zz.png']}
+    ];
+
+    const grid = document.getElementById('freqGrid');
+    frequent.forEach(f=>{
+      const d = document.createElement('div'); d.className='fcard';
+      const more = document.createElement('div'); more.className='more'; more.textContent = '+4 more';
+      const img = document.createElement('img'); img.src = f.imgs[0];
+      const p = document.createElement('p'); p.textContent = f.title;
+      d.appendChild(img);
+      d.appendChild(more);
+      d.appendChild(p);
+      grid.appendChild(d);
+    });
+
+    function openCart(){ alert('Open cart (demo)'); }
+    
+   document.getElementById('profid_U5647').onclick = function(){
+      window.location.href = 'bl_profile.html';
+    }
+  </script>
+</body>
+</html>

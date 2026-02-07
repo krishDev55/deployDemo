@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vendor & Purchase Management</title>
+<style>
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:#071024;color:#e6eef6}
+.container{max-width:1200px;margin:28px auto;padding:22px}
+header{display:flex;align-items:center;gap:18px}
+.logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,#06b6d4,#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:700}
+.card{background:rgba(255,255,255,0.03);padding:16px;border-radius:12px;margin-bottom:18px}
+input,select{padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;margin-right:8px}
+button.btn{background:#06b6d4;border:none;padding:8px 12px;border-radius:8px;font-weight:600;cursor:pointer;margin-right:8px}
+button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#94a3b8;cursor:pointer;margin-right:8px}
+table{width:100%;border-collapse:collapse;margin-top:12px}
+th,td{padding:10px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.03);font-size:14px}
+.muted{color:#94a3b8;font-size:13px}
+.form-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+nav{display:flex;gap:12px;margin-bottom:12px}
+nav button{flex:1}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="logo">CS</div>
+<h1>Vendor & Purchase Management</h1>
+</header>
+
+<nav>
+<button id="tab-vendors" class="btn">Vendor Management</button>
+<button id="tab-purchase" class="btn">Purchase Entry</button>
+</nav>
+
+<section class="card" id="section-vendors">
+<h2>Vendor Management</h2>
+<div class="form-row">
+<input id="supplier-name" placeholder="Supplier Name*" />
+<input id="supplier-mobile" placeholder="Mobile*" />
+<input id="supplier-company" placeholder="Company" />
+<input id="supplier-email" placeholder="Email" />
+<input id="supplier-address" placeholder="Address" />
+</div>
+<button class="btn" id="save-supplier">Save Supplier</button>
+<table id="supplier-table"><thead><tr><th>Name</th><th>Mobile</th><th>Company</th><th>Email</th><th>Address</th><th></th></tr></thead><tbody></tbody></table>
+</section>
+
+<section class="card" id="section-purchase" style="display:none">
+<h2>Purchase Entry</h2>
+<div class="form-row">
+<input id="purchase-bill" placeholder="Bill No" readonly />
+<select id="purchase-supplier"></select>
+<button class="ghost" id="add-new-supplier">+ Add Supplier</button>
+<select id="purchase-product"></select>
+<button class="ghost" id="add-new-product">+ Add Product</button>
+<input id="purchase-qty" type="number" placeholder="Qty*" min="1" />
+<input id="purchase-price" type="number" placeholder="Price*" min="0" />
+<input id="purchase-date" type="date" />
+</div>
+<button class="btn" id="add-purchase">Add Purchase</button>
+<table id="purchase-table"><thead><tr><th>Bill No</th><th>Supplier</th><th>Product</th><th>Qty</th><th>Price</th><th>Date</th></tr></thead><tbody></tbody></table>
+</section>
+</div>
+
+<script>
+const STORAGE_SUPPLIERS = 'suppliers';
+const STORAGE_PURCHASES = 'purchases';
+const STORAGE_PRODUCTS = 'clothstore-data-v3';
+
+let suppliers = JSON.parse(localStorage.getItem(STORAGE_SUPPLIERS)) || [];
+let purchases = JSON.parse(localStorage.getItem(STORAGE_PURCHASES)) || [];
+let products = [];
+try { products = JSON.parse(localStorage.getItem(STORAGE_PRODUCTS)).products || []; } catch(e){ products = []; }
+
+// Tab switching
+document.getElementById('tab-vendors').addEventListener('click', ()=>{
+  document.getElementById('section-vendors').style.display='block';
+  document.getElementById('section-purchase').style.display='none';
+});
+document.getElementById('tab-purchase').addEventListener('click', ()=>{
+  document.getElementById('section-vendors').style.display='none';
+  document.getElementById('section-purchase').style.display='block';
+});
+
+function saveSuppliers(){ localStorage.setItem(STORAGE_SUPPLIERS, JSON.stringify(suppliers)); renderSuppliers(); populateSupplierDropdown(); }
+function savePurchases(){ localStorage.setItem(STORAGE_PURCHASES, JSON.stringify(purchases)); renderPurchases(); }
+function saveProducts(){ localStorage.setItem(STORAGE_PRODUCTS, JSON.stringify({products})); populateProductDropdown(); }
+
+function populateSupplierDropdown(){
+  const sel = document.getElementById('purchase-supplier');
+  sel.innerHTML = '<option value="">Select Supplier</option>' + suppliers.map(s=>`<option value="${s.id}">${s.name}</option>`).join('');
+}
+function populateProductDropdown(){
+  const sel = document.getElementById('purchase-product');
+  sel.innerHTML = '<option value="">Select Product</option>' + products.map(p=>`<option value="${p.sku}">${p.name} (${p.sku})</option>`).join('');
+}
+
+function generateBillNo(){ return 'PBILL-'+Date.now(); }
+function resetPurchaseForm(){
+  if(!document.getElementById('purchase-bill').value){
+    document.getElementById('purchase-bill').value = generateBillNo();
+  }
+  document.getElementById('purchase-supplier').value = '';
+  document.getElementById('purchase-product').value = '';
+  document.getElementById('purchase-qty').value = '';
+  document.getElementById('purchase-price').value = '';
+  document.getElementById('purchase-date').value = new Date().toISOString().split('T')[0];
+}
+
+function renderSuppliers(){
+  const tbody = document.querySelector('#supplier-table tbody');
+  tbody.innerHTML = suppliers.map((s,i)=>`<tr><td>${s.name}</td><td>${s.mobile}</td><td>${s.company||''}</td><td>${s.email||''}</td><td>${s.address||''}</td><td><button class='ghost' data-i='${i}'>Delete</button></td></tr>`).join('');
+  tbody.querySelectorAll('button.ghost').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      const idx = +e.currentTarget.dataset.i;
+      if(confirm('Delete supplier?')){
+        suppliers.splice(idx,1);
+        saveSuppliers();
+      }
+    });
+  });
+}
+
+function renderPurchases(){
+  const tbody = document.querySelector('#purchase-table tbody');
+  tbody.innerHTML = purchases.map(p=>{
+    const sup = suppliers.find(s=>s.id==p.supplierId);
+    const prod = products.find(pr=>pr.sku===p.productSku);
+    return `<tr><td>${p.billNo}</td><td>${sup?sup.name:'N/A'}</td><td>${prod?prod.name:'N/A'}</td><td>${p.qty}</td><td>₹${p.price}</td><td>${p.date}</td></tr>`;
+  }).join('');
+}
+
+function addSupplier(name,mobile,company,email,address){
+  const id = Date.now();
+  suppliers.push({id,name,mobile,company,email,address});
+  saveSuppliers();
+}
+function addProduct(name, sku, price, qty){
+  products.push({name, sku, price, qty});
+  saveProducts();
+}
+
+// Event Listeners
+
+document.getElementById('save-supplier').addEventListener('click', ()=>{
+  const name = document.getElementById('supplier-name').value.trim();
+  const mobile = document.getElementById('supplier-mobile').value.trim();
+  const company = document.getElementById('supplier-company').value.trim();
+  const email = document.getElementById('supplier-email').value.trim();
+  const address = document.getElementById('supplier-address').value.trim();
+  if(!name || !mobile){ alert('Supplier Name and Mobile are required'); return; }
+  addSupplier(name,mobile,company,email,address);
+  document.getElementById('supplier-name').value='';
+  document.getElementById('supplier-mobile').value='';
+  document.getElementById('supplier-company').value='';
+  document.getElementById('supplier-email').value='';
+  document.getElementById('supplier-address').value='';
+});
+
+document.getElementById('add-new-product').addEventListener('click', ()=>{
+  const name = prompt('Enter Product Name');
+  if(!name) return alert('Product Name required');
+  const sku = prompt('Enter SKU');
+  if(!sku) return alert('SKU required');
+  const price = parseFloat(prompt('Enter Price', '0')) || 0;
+  const qty = parseInt(prompt('Enter Quantity', '0')) || 0;
+  addProduct(name, sku, price, qty);
+  populateProductDropdown();
+});
+
+document.getElementById('add-purchase').addEventListener('click', ()=>{
+  const billNo = document.getElementById('purchase-bill').value;
+  const supplierId = document.getElementById('purchase-supplier').value;
+  const productSku = document.getElementById('purchase-product').value;
+  const qty = parseInt(document.getElementById('purchase-qty').value)||0;
+  const price = parseFloat(document.getElementById('purchase-price').value)||0;
+  const date = document.getElementById('purchase-date').value;
+  if(!supplierId || !productSku || qty<=0 || price<=0){ alert('Please fill all required purchase fields'); return; }
+  purchases.push({billNo,supplierId,productSku,qty,price,date});
+  savePurchases();
+  resetPurchaseForm();
+});
+
+// Initial population
+populateSupplierDropdown();
+populateProductDropdown();
+renderSuppliers();
+renderPurchases();
+resetPurchaseForm();
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+    "liq85": {
+        "water": 80.5,
+        "soda": 0.7,
+        "slurry": 3.5,
+        "sles": 0.7,
+        "salt": 1.4
+    },
+    "liq496": {
+        "water": 460,
+        "soda": 4,
+        "slurry": 20,
+        "sles": 4,
+        "salt": 8
+    },
+    "tol90": {
+        "water": 80,
+        "slurry": 5.4,
+        "acid": 3.5
+    },
+    "tol66": {
+        "water": 60,
+        "slurry": 4.05,
+        "acid": 2.60
+    }
+}

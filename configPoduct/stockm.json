@@ -1,0 +1,13 @@
+{
+    "5-2-2026": {
+        "bname": "liq85",
+        "soda_use": 0.7,
+        "soda_remain": 0,
+        "slurry_use": 3.5,
+        "slurry_remain": 0,
+        "sles_use": 0.7,
+        "sles_remain": 0,
+        "salt_use": 1.4,
+        "salt_remain": 0
+    }
+}

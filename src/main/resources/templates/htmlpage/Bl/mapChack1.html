@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Decimal to DMS Converter</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f7f7f7;
+            padding: 20px;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 450px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: #f7d02c;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #2a8a3a;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Decimal → DMS Converter</h2>
+
+    <input id="latDecimal" type="number" step="0.000001" placeholder="Enter Decimal Latitude (e.g. 18.6825)">
+    <input id="lngDecimal" type="number" step="0.000001" placeholder="Enter Decimal Longitude (e.g. 73.830833)">
+
+    <button onclick="convertDecimal()">Convert</button>
+
+    <div id="result" class="result">DMS Result: —</div>
+</div>
+
+<script>
+function decimalToDMS(decimal, type) {
+    const dir = type === "lat"
+        ? (decimal >= 0 ? "N" : "S")
+        : (decimal >= 0 ? "E" : "W");
+
+    decimal = Math.abs(decimal);
+
+    const deg = Math.floor(decimal);
+    const minFloat = (decimal - deg) * 60;
+    const min = Math.floor(minFloat);
+    const sec = ((minFloat - min) * 60).toFixed(2);
+
+    return `${deg}° ${min}' ${sec}" ${dir}`;
+}
+
+function convertDecimal() {
+    const latDecimal = parseFloat(document.getElementById("latDecimal").value);
+    const lngDecimal = parseFloat(document.getElementById("lngDecimal").value);
+
+    if (isNaN(latDecimal) || isNaN(lngDecimal)) {
+        document.getElementById("result").innerHTML = "Please enter valid decimal values!";
+        return;
+    }
+
+    const latDMS = decimalToDMS(latDecimal, "lat");
+    const lngDMS = decimalToDMS(lngDecimal, "lng");
+
+    document.getElementById("result").innerHTML =
+        `Latitude: ${latDMS}<br>Longitude: ${lngDMS}`;
+}
+</script>
+
+</body>
+</html>

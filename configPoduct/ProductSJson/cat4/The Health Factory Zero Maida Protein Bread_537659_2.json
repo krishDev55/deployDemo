@@ -1,0 +1,1560 @@
+{
+  "product_name": "The Health Factory Zero Maida Protein Bread",
+  "is_unicorn": false,
+  "inventory": 1,
+  "price": 84,
+  "additional_charges": 0,
+  "mrp": 85,
+  "images": [
+    "https://cdn.grofers.com/da/cms-assets/cms/product/f4921d2b-2a89-45eb-add6-27027b8c3bca.jpg",
+    "https://cdn.grofers.com/da/cms-assets/cms/product/0065663f-ddfe-4e3b-a231-d0d1abb10b28.jpg",
+    "https://cdn.grofers.com/da/cms-assets/cms/product/cd411d30-a5f3-4232-9e03-018b4b50d0ff.jpg",
+    "https://cdn.grofers.com/da/cms-assets/cms/product/79936b0c-fc5a-46c3-b4b7-050b9b6a0b67.jpg",
+    "https://cdn.grofers.com/da/cms-assets/cms/product/ce9ae160-fba4-41b1-a66f-a73f5e9786e4.jpg",
+    "https://cdn.grofers.com/da/cms-assets/cms/product/930906b6-5fbb-48af-a651-c902b5cf49b4.jpg",
+    "https://cdn.grofers.com/da/cms-assets/cms/product/de50c960-cdd4-4509-8685-b347de362d45.jpg",
+    "https://cdn.grofers.com/da/cms-assets/cms/product/9d4248a8-3662-4abe-8b72-ef44dfa30e97.jpg",
+    "https://cdn.grofers.com/da/cms-assets/cms/product/53cf7e00-ce96-4fd1-8463-d37b1a5ee520.jpg",
+    "https://cdn.grofers.com/app/images/products/common/customer_care.jpg",
+    "https://cdn.grofers.com/da/cms-assets/cms/product_videos_thumbnails/781bb7c1-67fb-4112-b1c2-11131789eb63.jpg",
+    "https://cdn.grofers.com/da/cms-assets/cms/product_videos_thumbnails/e9810f9d-2411-4e9c-b235-9484db01290f.jpg"
+  ],
+  "categories": {
+    "L0Cat": {
+      "ID": 14,
+      "Name": "",
+      "Properties": null
+    },
+    "L1Cat": {
+      "ID": 953,
+      "Name": "",
+      "Properties": null
+    },
+    "L2Cat": {
+      "ID": 1097,
+      "Name": "",
+      "Properties": null
+    }
+  },
+  "brand": "The Health Factory",
+  "id": 537659,
+  "attributes": [
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Unit",
+      "attribute_name": "Unit (with options)",
+      "url": null,
+      "value": "250 g",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "250 g",
+          "child_attributes": null
+        }
+      ],
+      "id": 80,
+      "value_type": "delimited_list",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Description",
+      "attribute_name": "Description",
+      "url": null,
+      "value": "Not Brown, 100% Whole Wheat.\n\nPower up with Zero Maida Protein Bread, crafted with a rich blend of Whey, Soy, Peas, and Milk and delivers up to 8g of protein in just 2 slices. Backed by our Clean Label Promise – No Maida, Preservatives, Emulsifiers, Palm Oil & Malt Powder, it’s the best choice for a fibre-rich, protein-packed snack!\n\nHealthy Fibre, Happy Gut- Up to 3g Fibre in 2 slices",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "Not Brown, 100% Whole Wheat.\n\nPower up with Zero Maida Protein Bread, crafted with a rich blend of Whey, Soy, Peas, and Milk and delivers up to 8g of protein in just 2 slices. Backed by our Clean Label Promise – No Maida, Preservatives, Emulsifiers, Palm Oil & Malt Powder, it’s the best choice for a fibre-rich, protein-packed snack!\n\nHealthy Fibre, Happy Gut- Up to 3g Fibre in 2 slices",
+          "child_attributes": null
+        }
+      ],
+      "id": 75,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Key Features",
+      "attribute_name": "Key Features",
+      "url": null,
+      "value": "100% Whole Wheat Flour (Chakki Fresh Atta), Protein Blend (Soy Protein Isolate, Pea Protein Isolate, Milk Solids, Whey Protein Concentrate), Gluten, Yeast, Vinegar, Sunflower Oil, Cane Sugar, Iodised Salt, Cultured Wheat Flour, Vitamin C.",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "100% Whole Wheat Flour (Chakki Fresh Atta), Protein Blend (Soy Protein Isolate, Pea Protein Isolate, Milk Solids, Whey Protein Concentrate), Gluten, Yeast, Vinegar, Sunflower Oil, Cane Sugar, Iodised Salt, Cultured Wheat Flour, Vitamin C.",
+          "child_attributes": null
+        }
+      ],
+      "id": 76,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Ingredients",
+      "attribute_name": "Ingredients",
+      "url": null,
+      "value": "0% Maida. 100% Whole Wheat\n7.6 g of Protein per Serving\nHigh Fibre\nNo Preservatives\nNo Emulsifiers\nNo Colours\nNo Palm Oil\nNo Malt Powder",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "0% Maida. 100% Whole Wheat\n7.6 g of Protein per Serving\nHigh Fibre\nNo Preservatives\nNo Emulsifiers\nNo Colours\nNo Palm Oil\nNo Malt Powder",
+          "child_attributes": null
+        }
+      ],
+      "id": 77,
+      "value_type": "text",
+      "range": null
+    },
+    
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Protein Per 100 g (g)",
+      "attribute_name": "Protein",
+      "url": null,
+      "value": "15.20 g",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "15.20 g",
+          "child_attributes": null
+        }
+      ],
+      "id": 126,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Energy Per 100 g (kcal)",
+      "attribute_name": "Energy (per 100 g)",
+      "url": null,
+      "value": "246.88 Kcal",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "246.88 Kcal",
+          "child_attributes": null
+        }
+      ],
+      "id": 133,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Nutrition Information",
+      "attribute_name": "Nutrition Information",
+      "url": null,
+      "value": "Typical Values Per Serving (2slices)\nEnergy (Kcal) 123.44\nProtein (g) 7.60\nCarbohydrate (g) 21.23\nSugar (g) 1.72\nAdded Sugar (g) 1\nDietary Fibre (g) 2.6\nFat (g) 0.82\nTrans Fat (g) 0\nSaturated Fat (g) 0.26\nCholesterol (mg) 0\nSodium (mg) 178.82",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "Typical Values Per Serving (2slices)\nEnergy (Kcal) 123.44\nProtein (g) 7.60\nCarbohydrate (g) 21.23\nSugar (g) 1.72\nAdded Sugar (g) 1\nDietary Fibre (g) 2.6\nFat (g) 0.82\nTrans Fat (g) 0\nSaturated Fat (g) 0.26\nCholesterol (mg) 0\nSodium (mg) 178.82",
+          "child_attributes": null
+        }
+      ],
+      "id": 134,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Total Carbohydrates Per 100 g (g)",
+      "attribute_name": "Total Carbohydrates (per 100 g)",
+      "url": null,
+      "value": "42.46 g",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "42.46 g",
+          "child_attributes": null
+        }
+      ],
+      "id": 135,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Added Sugars Per 100 g (g)",
+      "attribute_name": "Added Sugars",
+      "url": null,
+      "value": "1.99 g",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "1.99 g",
+          "child_attributes": null
+        }
+      ],
+      "id": 138,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Total Fat Per 100 g (g)",
+      "attribute_name": "Total Fat",
+      "url": null,
+      "value": "1.64 g",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "1.64 g",
+          "child_attributes": null
+        }
+      ],
+      "id": 139,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Saturated Fat Per 100 g (g)",
+      "attribute_name": "Saturated Fat",
+      "url": null,
+      "value": "0.52 g",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "0.52 g",
+          "child_attributes": null
+        }
+      ],
+      "id": 140,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Trans Fat Per 100 g (g)",
+      "attribute_name": "Trans Fat",
+      "url": null,
+      "value": "0.00 g",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "0.00 g",
+          "child_attributes": null
+        }
+      ],
+      "id": 141,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Unsaturated Fat Per 100 g (g)",
+      "attribute_name": "Unsaturated Fat",
+      "url": null,
+      "value": "1.12 g",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "1.12 g",
+          "child_attributes": null
+        }
+      ],
+      "id": 146,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Sodium Per 100 g (mg)",
+      "attribute_name": "Sodium",
+      "url": null,
+      "value": "357.84 mg",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "357.84 mg",
+          "child_attributes": null
+        }
+      ],
+      "id": 147,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Cholesterol Per 100 g (g)",
+      "attribute_name": "Cholesterol",
+      "url": null,
+      "value": "0.00 g",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "0.00 g",
+          "child_attributes": null
+        }
+      ],
+      "id": 153,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Shelf Life",
+      "attribute_name": "Shelf Life",
+      "url": null,
+      "value": "6 days",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "6 days",
+          "child_attributes": null
+        }
+      ],
+      "id": 242,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Disclaimer",
+      "attribute_name": "Disclaimer",
+      "url": null,
+      "value": "Every effort is made to maintain accuracy of all information. However, actual product packaging and materials may contain more and/or different information. It is recommended not to solely rely on the information presented.",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "Every effort is made to maintain accuracy of all information. However, actual product packaging and materials may contain more and/or different information. It is recommended not to solely rely on the information presented.",
+          "child_attributes": null
+        }
+      ],
+      "id": 245,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Packaging Type",
+      "attribute_name": "Product Physical Packaging Type",
+      "url": null,
+      "value": "Packet",
+      "type": "not_shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 31321,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "Packet",
+          "child_attributes": null
+        }
+      ],
+      "id": 308,
+      "value_type": "enum",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Packed Product Length (cm)",
+      "attribute_name": "Packed Product Length (cm)",
+      "url": null,
+      "value": "8",
+      "type": "not_shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "8",
+          "child_attributes": null
+        }
+      ],
+      "id": 588,
+      "value_type": "number",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Packed Product Breadth (cm)",
+      "attribute_name": "Packed Product Width (cm)",
+      "url": null,
+      "value": "12",
+      "type": "not_shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "12",
+          "child_attributes": null
+        }
+      ],
+      "id": 589,
+      "value_type": "number",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Packed Product Height (cm)",
+      "attribute_name": "Packed Product Height (cm)",
+      "url": null,
+      "value": "14",
+      "type": "not_shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "14",
+          "child_attributes": null
+        }
+      ],
+      "id": 590,
+      "value_type": "number",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Manufacturer's Name and Address",
+      "attribute_name": "Manufacturer Details",
+      "url": null,
+      "value": "Mr. Bite, Shed No. 1&2, SY no. 259/7-P1-1, U.M. Kaval, Nagegowdana Palya Rd, Bhanshankari 6th stage, further extension, Kanakpuria main Rd, Bangalore, Karnataka - 560062",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "Mr. Bite, Shed No. 1&2, SY no. 259/7-P1-1, U.M. Kaval, Nagegowdana Palya Rd, Bhanshankari 6th stage, further extension, Kanakpuria main Rd, Bangalore, Karnataka - 560062",
+          "child_attributes": null
+        }
+      ],
+      "id": 632,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Marketer’s Name and Address",
+      "attribute_name": "Marketed By",
+      "url": null,
+      "value": "Nutri Being Pvt. Ltd,\nUnit No - A 31, Nand Jyot Industrial Estate, Sakinaka, Andheri East, Mumbai - 400072",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "Nutri Being Pvt. Ltd,\nUnit No - A 31, Nand Jyot Industrial Estate, Sakinaka, Andheri East, Mumbai - 400072",
+          "child_attributes": null
+        }
+      ],
+      "id": 634,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Weight (g)",
+      "attribute_name": "_weight",
+      "url": null,
+      "value": "255.0",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "255.0",
+          "child_attributes": null
+        }
+      ],
+      "id": 638,
+      "value_type": "number",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Country of Origin",
+      "attribute_name": "Country of Origin",
+      "url": null,
+      "value": "India",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 12957,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "India",
+          "child_attributes": null
+        }
+      ],
+      "id": 641,
+      "value_type": "enum",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "FSSAI License",
+      "attribute_name": "FSSAI License",
+      "url": null,
+      "value": "11522998000168",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "11522998000168",
+          "child_attributes": null
+        }
+      ],
+      "id": 642,
+      "value_type": "number",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Customer Care Details",
+      "attribute_name": "Customer Care Details",
+      "url": null,
+      "value": "Email: info@blinkit.com",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "Email: info@blinkit.com",
+          "child_attributes": null
+        }
+      ],
+      "id": 644,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Calories per 100g (Kcal)",
+      "attribute_name": "Calorie Content",
+      "url": null,
+      "value": "241 Kcal",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "241 Kcal",
+          "child_attributes": null
+        }
+      ],
+      "id": 748,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Product Class",
+      "attribute_name": "Product Class",
+      "url": null,
+      "value": "Perishables",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "Perishables",
+          "child_attributes": null
+        }
+      ],
+      "id": 777,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Gift wrappable item",
+      "attribute_name": "Gift wrappable item",
+      "url": null,
+      "value": "True",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "True",
+          "child_attributes": null
+        }
+      ],
+      "id": 1306,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Type",
+      "attribute_name": "Type",
+      "url": null,
+      "value": "Protein Bread",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "Protein Bread",
+          "child_attributes": null
+        }
+      ],
+      "id": 1547,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Net Weight",
+      "attribute_name": "Net Weight (Without Packaging)",
+      "url": null,
+      "value": "250 g",
+      "type": "not_shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "250 g",
+          "child_attributes": null
+        }
+      ],
+      "id": 2073,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Gross Weight",
+      "attribute_name": "Gross Weight (With Packaging)",
+      "url": null,
+      "value": "255 g",
+      "type": "not_shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "255 g",
+          "child_attributes": null
+        }
+      ],
+      "id": 2074,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Food Type",
+      "attribute_name": "food_type",
+      "url": null,
+      "value": "veg",
+      "type": "not_shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 49967,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "veg",
+          "child_attributes": null
+        }
+      ],
+      "id": 2474,
+      "value_type": "enum",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Unit Value",
+      "attribute_name": "UnitValue",
+      "url": null,
+      "value": "250.0",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "250.0",
+          "child_attributes": null
+        }
+      ],
+      "id": 2871,
+      "value_type": "number",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Unit Type",
+      "attribute_name": "UnitType",
+      "url": null,
+      "value": "g",
+      "type": "not_shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 11539,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "g",
+          "child_attributes": null
+        }
+      ],
+      "id": 2872,
+      "value_type": "enum",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Return",
+      "attribute_name": "Return Type - SLP",
+      "url": null,
+      "value": "Non-returnable",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 11655,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "Non-returnable",
+          "child_attributes": null
+        }
+      ],
+      "id": 3089,
+      "value_type": "enum",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "IGST",
+      "attribute_name": "IGST",
+      "url": null,
+      "value": "0",
+      "type": "not_shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 27734,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "0",
+          "child_attributes": null
+        }
+      ],
+      "id": 3551,
+      "value_type": "enum",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "SGST",
+      "attribute_name": "SGST",
+      "url": null,
+      "value": "0",
+      "type": "not_shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 27727,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "0",
+          "child_attributes": null
+        }
+      ],
+      "id": 3552,
+      "value_type": "enum",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "CGST",
+      "attribute_name": "CGST",
+      "url": null,
+      "value": "0",
+      "type": "not_shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 27720,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "0",
+          "child_attributes": null
+        }
+      ],
+      "id": 3553,
+      "value_type": "enum",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Sourced Fresh - Service Promise",
+      "attribute_name": "Sourced Fresh - Service Promise",
+      "url": null,
+      "value": "Freshly Sourced",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 27400,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "Freshly Sourced",
+          "child_attributes": null
+        }
+      ],
+      "id": 3593,
+      "value_type": "enum",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Serve Size",
+      "attribute_name": "Serve Size",
+      "url": null,
+      "value": "50 g",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "50 g",
+          "child_attributes": null
+        }
+      ],
+      "id": 3699,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "HSN Code",
+      "attribute_name": "HSN Code",
+      "url": null,
+      "value": "19051000",
+      "type": "not_shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "19051000",
+          "child_attributes": null
+        }
+      ],
+      "id": 3800,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Inner Case",
+      "attribute_name": "Inner Case",
+      "url": null,
+      "value": "1",
+      "type": "not_shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "1",
+          "child_attributes": null
+        }
+      ],
+      "id": 3801,
+      "value_type": "number",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Outer Case",
+      "attribute_name": "Outer Case",
+      "url": null,
+      "value": "1",
+      "type": "not_shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "1",
+          "child_attributes": null
+        }
+      ],
+      "id": 3802,
+      "value_type": "number",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "price_per_unit_base_value",
+      "attribute_name": "price_per_unit_base_value",
+      "url": null,
+      "value": "100",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "100",
+          "child_attributes": null
+        }
+      ],
+      "id": 4020,
+      "value_type": "number",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "price_per_unit_base_type",
+      "attribute_name": "price_per_unit_base_type",
+      "url": null,
+      "value": "g",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "g",
+          "child_attributes": null
+        }
+      ],
+      "id": 4021,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Unit Base Value",
+      "attribute_name": "Unit Base Value",
+      "url": null,
+      "value": "250.0",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "250.0",
+          "child_attributes": null
+        }
+      ],
+      "id": 5050,
+      "value_type": "number",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Unit Base UOM",
+      "attribute_name": "Unit Base UOM",
+      "url": null,
+      "value": "g",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 28838,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "g",
+          "child_attributes": null
+        }
+      ],
+      "id": 5051,
+      "value_type": "enum",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Unit Multiplier",
+      "attribute_name": "Unit Multiplier",
+      "url": null,
+      "value": "1.0",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "1.0",
+          "child_attributes": null
+        }
+      ],
+      "id": 5052,
+      "value_type": "number",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Unit Total Quantity",
+      "attribute_name": "Unit Total Quantity",
+      "url": null,
+      "value": "250.0",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "250.0",
+          "child_attributes": null
+        }
+      ],
+      "id": 5053,
+      "value_type": "number",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "is_ptr",
+      "attribute_name": "is_ptr",
+      "url": null,
+      "value": "False",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "False",
+          "child_attributes": null
+        }
+      ],
+      "id": 7569,
+      "value_type": "boolean",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Shelf Life (In days)",
+      "attribute_name": "Shelf Life (In days)",
+      "url": null,
+      "value": "6",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "6",
+          "child_attributes": null
+        }
+      ],
+      "id": 9051,
+      "value_type": "number",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Inward Guidelines",
+      "attribute_name": "Inward Guidelines",
+      "url": null,
+      "value": "5",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "5",
+          "child_attributes": null
+        }
+      ],
+      "id": 9089,
+      "value_type": "number",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Outward Guidelines",
+      "attribute_name": "Outward Guidelines",
+      "url": null,
+      "value": "1",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "1",
+          "child_attributes": null
+        }
+      ],
+      "id": 9090,
+      "value_type": "number",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Dietary Fiber Per 100 g (g)",
+      "attribute_name": "Dietary Fiber",
+      "url": null,
+      "value": "4.92 g",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "4.92 g",
+          "child_attributes": null
+        }
+      ],
+      "id": 9191,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Total Sugar Per 100 g (g)",
+      "attribute_name": "Total Sugar Per 100 g (g)",
+      "url": null,
+      "value": "3.43 g",
+      "type": "shown_to_customer",
+      "value_info": [
+        {
+          "value_id": 0,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "3.43 g",
+          "child_attributes": null
+        }
+      ],
+      "id": 9228,
+      "value_type": "text",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Tax Reform Version",
+      "attribute_name": "tax_reform_version",
+      "url": null,
+      "value": "2017-07-01",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 55079,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "2017-07-01",
+          "child_attributes": null
+        }
+      ],
+      "id": 11761,
+      "value_type": "enum",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "CGST (2025)",
+      "attribute_name": "CGST_2025",
+      "url": null,
+      "value": "0",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 55148,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "0",
+          "child_attributes": null
+        }
+      ],
+      "id": 11763,
+      "value_type": "enum",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "SGST (2025)",
+      "attribute_name": "SGST_2025",
+      "url": null,
+      "value": "0",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 55143,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "0",
+          "child_attributes": null
+        }
+      ],
+      "id": 11764,
+      "value_type": "enum",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "IGST (2025)",
+      "attribute_name": "IGST_2025",
+      "url": null,
+      "value": "0",
+      "type": "internal",
+      "value_info": [
+        {
+          "value_id": 55138,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "0",
+          "child_attributes": null
+        }
+      ],
+      "id": 11765,
+      "value_type": "enum",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "is_return_eligible",
+      "attribute_name": "",
+      "url": null,
+      "value": "false",
+      "type": "",
+      "value_info": [],
+      "id": 3482,
+      "value_type": "",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "is_exchange_eligible",
+      "attribute_name": "",
+      "url": null,
+      "value": "false",
+      "type": "",
+      "value_info": [],
+      "id": 3483,
+      "value_type": "",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "is_replacement_eligible",
+      "attribute_name": "",
+      "url": null,
+      "value": "True",
+      "type": "",
+      "value_info": [],
+      "id": 4546,
+      "value_type": "",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "is_easy_return_eligible",
+      "attribute_name": "",
+      "url": null,
+      "value": "false",
+      "type": "",
+      "value_info": [],
+      "id": 5804,
+      "value_type": "",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "refund_eligible",
+      "attribute_name": "",
+      "url": null,
+      "value": "True",
+      "type": "",
+      "value_info": [],
+      "id": 5805,
+      "value_type": "",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Return Service Promise Header",
+      "attribute_name": "",
+      "url": null,
+      "value": "72 hours only replacement",
+      "type": "",
+      "value_info": [],
+      "id": 11298,
+      "value_type": "",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "return_eligibility_days",
+      "attribute_name": "",
+      "url": null,
+      "value": "3",
+      "type": "",
+      "value_info": [],
+      "id": 3484,
+      "value_type": "",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "Return Policy",
+      "attribute_name": "",
+      "url": null,
+      "value": "Only Replacement of the item is permitted, within 72 hours of purchase, if it is found to be of poor quality, damaged or incorrect. If the item is incorrect, please ensure that it is sealed, unused, and in original condition.",
+      "type": "",
+      "value_info": [],
+      "id": 667,
+      "value_type": "",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "return_policy_pdp_image",
+      "attribute_name": "",
+      "url": null,
+      "value": "https://cdn.grofers.com/layout-engine/v2/2025-01/72_replacement_1/light.jpg",
+      "type": "",
+      "value_info": [],
+      "id": 5807,
+      "value_type": "",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "easy_return_pdp_image",
+      "attribute_name": "",
+      "url": null,
+      "value": "",
+      "type": "",
+      "value_info": [],
+      "id": 5806,
+      "value_type": "",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "hazardous",
+      "attribute_name": "",
+      "url": null,
+      "value": "NON HAZARDOUS",
+      "type": "",
+      "value_info": [
+        {
+          "value_id": 47745,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "",
+          "child_attributes": null
+        }
+      ],
+      "id": 9231,
+      "value_type": "",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "spill prone",
+      "attribute_name": "",
+      "url": null,
+      "value": "NO",
+      "type": "",
+      "value_info": [
+        {
+          "value_id": 47747,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "",
+          "child_attributes": null
+        }
+      ],
+      "id": 9302,
+      "value_type": "",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "fragile",
+      "attribute_name": "",
+      "url": null,
+      "value": "NO",
+      "type": "",
+      "value_info": [
+        {
+          "value_id": 48992,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "",
+          "child_attributes": null
+        }
+      ],
+      "id": 9472,
+      "value_type": "",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "temperature-type",
+      "attribute_name": "",
+      "url": null,
+      "value": "ROOM_TEMPERATURE",
+      "type": "",
+      "value_info": [
+        {
+          "value_id": 48996,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "",
+          "child_attributes": null
+        }
+      ],
+      "id": 9473,
+      "value_type": "",
+      "range": null
+    },
+    {
+      "details": "",
+      "help_text": "",
+      "name": "is_fnv",
+      "attribute_name": "",
+      "url": null,
+      "value": "NO",
+      "type": "",
+      "value_info": [
+        {
+          "value_id": 49944,
+          "value_detail": "",
+          "value_asset_url": "",
+          "value": "",
+          "child_attributes": null
+        }
+      ],
+      "id": 9674,
+      "value_type": "",
+      "range": null
+    }
+  ]
+}

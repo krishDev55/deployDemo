@@ -1,0 +1,182 @@
+/* -----------------View cart Section---------------------------------------------------- */
+
+#viewCartSection {
+    display: none;
+}
+
+.back-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.25);
+    display: grid;
+    place-items: center;
+    cursor: pointer
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* background: #f5f5f5; */
+}
+
+/* Header */
+.headerCart {
+    margin-top: -40px;
+    margin-left: 33px;
+    /* background: #fff; */
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Delivery Badge */
+.deliveryCart {
+    /* background: #fff; */
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge {
+    background: #111;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+/* Address */
+.addressCart {
+    /* background: #fff; */
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+/* XtraSaver */
+.xtrasaverCart {
+    background: #fff;
+    margin: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progress {
+    height: 6px;
+    background: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 6px;
+}
+
+.progress div {
+    width: 70%;
+    height: 100%;
+    background: green;
+}
+
+/* Cart */
+.cartDM {
+    /* background: #fff; */
+    padding: 12px;
+    margin-top: -21px;
+}
+
+.cartDM h3 {
+    margin: 0 0 10px 0;
+}
+
+/* Item */
+.itemCart {
+    display: flex;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.itemCart img {
+    width: 70px;
+    height: 70px;
+    border-radius: 6px;
+}
+
+.item-detailsCart {
+    flex: 1;
+}
+
+.item-titleCart {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.item-weightCart {
+    font-size: 12px;
+    color: #777;
+}
+
+.priceCart {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.mrpCart {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 12px;
+    margin-left: 6px;
+}
+
+.qtyCart {
+    display: flex;
+    /* align-items: center; */
+    align-items: flex-end;
+    gap: 6px;
+    flex: 1;
+    flex-direction: column;
+}
+
+.pr_tPrice{
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.qtyCart button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: #2979ff;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+}
+
+/* Footer */
+.footerCart {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* background: #fff; */
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ddd;
+}
+
+.pay-btnCart {
+    /* background: #0f0f0d; */
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+/* -----------------View cart Section---------------------------------------------------- */

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blinkit — Orders List (Replica)</title>
+  <style>
+    :root{
+      --bg:#0f0f11; --card:#19181b; --muted:#9aa0a6; --accent:#2ea44f; --danger:#e04b4b;
+      --soft:#262428; --radius:14px; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#0b0b0b 0%, #0f0f11 60%);color:#fff}
+    .frame{width:360px;max-width:100%;margin:18px auto;border-radius:22px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.04) 100%);box-shadow:0 6px 30px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.02)}
+    header{padding:12px 14px;display:flex;align-items:center;gap:10px;background:transparent}
+    .back{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.03);display:grid;place-items:center;cursor:pointer}
+    h1{font-size:16px;margin:0;font-weight:700}
+    .content{padding:12px}
+
+    /* Order card */
+    .order-card{background:var(--card);border-radius:12px;padding:12px;margin-bottom:12px;box-shadow:0 6px 18px rgba(0,0,0,0.45)}
+    .order-top{display:flex;align-items:center;gap:12px}
+    .status-badge{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));font-weight:700}
+    .status-ok{background:linear-gradient(180deg,#eafaf0,#dff6e8);color:#0b6b2f}
+    .status-cancel{background:linear-gradient(180deg,#fdecec,#f6d6d6);color:#8a2424}
+    .order-title{font-weight:700}
+    .order-meta{color:var(--muted);font-size:12px;margin-top:4px}
+    .product-row{display:flex;gap:10px;padding:12px 0;align-items:center}
+    .thumb{width:48px;height:48px;border-radius:8px;background:#111;display:grid;place-items:center;overflow:hidden}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .card-actions{display:flex;gap:16px;justify-content:flex-end;color:var(--accent);font-weight:700;font-size:13px;padding-top:6px}
+
+    .small{font-size:13px;color:var(--muted)}
+    .dots{margin-left:8px;opacity:0.6}
+
+    /* utility */
+    .muted{color:var(--muted)}
+    .center{text-align:center}
+
+    /* responsive */
+    @media (max-width:420px){.frame{width:100%;border-radius:0}}
+
+    /* clickable effect */
+    .clickable{cursor:pointer}
+    .clickable:active{transform:translateY(1px)}
+
+    /* demo footer */
+    footer{padding:10px 12px;border-top:1px solid rgba(255,255,255,0.02);display:flex;gap:10px;align-items:center;justify-content:space-between}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
+  
+    #ORDSUMTOP{cursor:pointer}
+    
+    
+    
+  </style>
+</head>
+<body>
+
+<div class="frame" role="region" aria-label="Orders demo">
+  <header>
+    <div class="back" onclick="history.back()" title="Back">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18l-6-6 6-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div style="flex:1"><h1>Your orders</h1></div>
+  </header>
+
+  <div class="content" id="list">
+
+  </div>
+
+  <footer>
+    <div style="font-size:13px;color:var(--muted)">Replica from your video</div>
+    <div>
+      <button class="btn" onclick="openVideo()">Open source video</button>
+      <button class="btn" onclick="refresh()">Refresh</button>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Sample data extracted visually from frames
+  const orders1 = [
+    {id: '#485', status: 'Arrived in 17 minutes', amount: '₹485', date: '09 Nov, 7:06 pm', items:[ 'https://dummyimage.com/64x64/222/fff&text=1','https://dummyimage.com/64x64/222/fff&text=2','https://dummyimage.com/64x64/222/fff&text=3'], state:'ok'},
+    {id: '#438', status: 'Arrived in 19 minutes', amount: '₹438', date: '04 Nov, 11:50 am', items:[ 'https://dummyimage.com/64x64/222/fff&text=4'], state:'ok'},
+    {id: '#242', status: 'Order cancelled', amount: '₹242', date: '20 Oct, 11:51 pm', items:[ 'https://dummyimage.com/64x64/222/fff&text=5','https://dummyimage.com/64x64/222/fff&text=6'], state:'cancel'},
+    {id: '#103', status: 'Arrived in 2 minutes', amount: '₹103', date: '07 Oct, 6:07 pm', items:[ 'https://dummyimage.com/64x64/222/fff&text=7'], state:'ok'}
+  ];
+  
+    let orders=  JSON.parse(localStorage.getItem("order"));
+       console.log("Json object1",orders);
+       //console.log("Json object2",order);
+		let temp_orId;
+
+  function buildCard(o){
+    if(o.order_id != temp_orId){
+      
+      
+      const card = document.createElement('div'); card.className='order-card';
+
+    const top = document.createElement('div'); 
+            top.className='order-top';
+            top.id='ORDSUMTOP';
+            top.onclick = function(){
+                document.location.href = '/ordSumry?ordId='+o.order_id;
+            };
+    /* const badge = document.createElement('div'); 
+            badge.className='status-badge '+(o.state==='ok'?'status-ok':'status-cancel');
+    badge.innerHTML = o.state==='ok'? '&#10004;' : '&#10008;'; 
+    */
+    
+    const meta = document.createElement('div'); meta.style.flex='1';
+    meta.innerHTML = `
+            <div class="order-title">${o.order_id}</div>
+            <div class="order-meta">${o.price} </div>`;
+    const dots = document.createElement('div');
+             dots.className='dots clickable'; 
+             dots.innerHTML='⋮'; 
+             dots.title='More'; 
+             dots.onclick = ()=>alert('More options for '+o.order_id);
+
+    //top.appendChild(badge); 
+    top.appendChild(meta); 
+    top.appendChild(dots);
+    card.appendChild(top);
+
+      const prodRow = document.createElement('div'); prodRow.className='product-row';  prodRow.setAttribute("id",o.order_id); 
+      const t = document.createElement('div'); t.className='thumb';
+      const img = document.createElement('img'); img.src = o.img; img.alt='item';
+      t.appendChild(img); 
+      
+      prodRow.appendChild(t);
+   
+    card.appendChild(prodRow);
+
+    const actions = document.createElement('div'); actions.className='card-actions';
+    const reorder = document.createElement('div'); reorder.className='clickable'; reorder.textContent='Reorder'; reorder.onclick = ()=>alert('Reorder '+o.order_id);
+    const rate = document.createElement('div'); rate.className='clickable'; rate.textContent='Rate order'; rate.onclick = ()=>alert('Rate '+o.order_id);
+    actions.appendChild(reorder); actions.appendChild(rate);
+    card.appendChild(actions);
+              temp_orId=o.order_id;
+    return card;
+      }
+      else{
+              let prodRow=  document.getElementById(o.order_id);
+              const t = document.createElement('div'); t.className='thumb';
+                  const img = document.createElement('img'); img.src = o.img; img.alt='item';
+                  t.appendChild(img); 
+                  prodRow.appendChild(t);
+              return ;    
+                  
+      }
+
+  }
+
+  const list = document.getElementById('list');
+
+    for (const  sArr of orders) {
+      console.log("singleArrays : "+sArr)
+      sArr.forEach(o=>{
+
+           if(o.order_id == temp_orId){
+                   let htmp= buildCard(o);
+           }
+           else{
+
+            return  list.appendChild(buildCard(o));
+           }
+ 
+          });
+      
+    }
+
+  function refresh(){ 
+	  list.innerHTML=''; 
+    for (const  sArr of orders) {
+      console.log("singleArrays : "+sArr)
+      sArr.forEach(o=>{
+
+           if(o.order_id == temp_orId){
+                   let htmp= buildCard(o);
+           }
+           else{
+            return  list.appendChild(buildCard(o));
+           }
+          });
+      
+      }
+     }
+
+  // Developer note: uploaded video path (local) — platform will map this to a downloadable URL when served
+  const uploaded = '/mnt/data/WhatsApp Video 2025-11-25 at 12.48.20 PM.mp4';
+  function openVideo(){ window.open(uploaded, '_blank'); }
+
+//   document.getElementById('ORDSUMTOP').onclick = function(){
+//       document.location.href = 'bl_order_summry.html';
+//   }
+  // let orderCarts=document.getElementsByClassName('order-card');
+  //   for(let i=0;i<orderCarts.length;i++){
+  //       orderCarts[i].onclick=function(){
+  //           document.location.href = 'bl_order_summry.html';
+  //       }
+  //   }
+ 
+//   [0].onclick = function(){
+//       document.location.href = 'bl_order_summry.html';
+//   }
+</script>
+
+</body>
+</html>

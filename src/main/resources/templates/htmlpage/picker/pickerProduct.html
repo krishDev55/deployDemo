@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Management</title>
+   <script src="https://unpkg.com/jsqr/dist/jsQR.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+ 
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #071024;
+      color: #e6eef6;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #06b6d4;
+    }
+    .form {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+      background: rgba(255,255,255,0.03);
+      padding: 16px;
+      border-radius: 12px;
+    }
+    input, select, textarea {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: transparent;
+      color: #fff;
+    }
+    select option {
+      background: #071024;
+      color: #fff;
+    }
+    textarea { grid-column: span 2; resize: vertical; }
+    button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn-save { background: #06b6d4; color: #fff; }
+    .btn-reset { background: transparent; border: 1px solid rgba(255,255,255,0.1); color: #94a3b8; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      text-align: left;
+    }
+    th { background: rgba(255,255,255,0.05); }
+    tr:hover { background: rgba(255,255,255,0.03); }
+    .actions button {
+      margin-right: 4px;
+      font-size: 13px;
+      padding: 6px 10px;
+    }
+    .btn-edit { background: #8b5cf6; color: white; }
+    .btn-delete { background: #ef4444; color: white; }
+
+    
+  </style>
+ 
+</head>
+<body>
+  <div class="container">
+    <h1>🧵 Product Management</h1>
+
+
+<section class="card" id="section-purchase" style="display:block">
+          <h2>Purchase Entry</h2>
+          <div class="form-row">
+          <input id="purchase-bill" placeholder="Bill No"  />
+          <select id="purchase-supplier"></select>
+          <button class="ghost" id="add-new-supplier">+ Add Supplier</button>
+          <select id="purchase-product"></select>
+          <input id="totalPurchase-qty" type="number" placeholder="TotalQty*" min="1" />
+          <input id="totalPurchase-price" type="number" placeholder="TotalPrice*" min="0" />
+          <input id="purchase-date" type="date" />
+        </div>
+        <button class="ghost" id="add-new-product">+ Add Product</button>
+        <button class="btn" id="add-purchase">Add Purchase</button>
+
+</section>
+
+
+    <div class="form" id="addProductFormId" style="display:none;">
+      <input id="sku" placeholder="SKU *">
+      <input id="name" placeholder="Product Name *">
+      
+      <select id="category">
+        <option value="">Select Category</option>
+        <option>Men</option>
+        <option>Women</option>
+        <option>Kids</option>
+        <option>Accessories</option>
+        <option>Winter Wear</option>
+        <option>Summer Collection</option>
+      </select>
+
+      <input id="brand" placeholder="Brand">
+
+      <select id="size">
+        <option value="">Select Size</option>
+        <option>S</option>
+        <option>SM</option>
+        <option>M</option>
+        <option>L</option>
+        <option>XL</option>
+        <option>XXL</option>
+        <option>3XL</option>
+        <option>24</option>
+        <option>26</option>
+        <option>28</option>
+        <option>30</option>
+        <option>32</option>
+        <option>34</option>
+        <option>36</option>
+        <option>38</option>
+        <option>40</option>
+      </select>
+
+      <select id="color">
+        <option value="">Select Color</option>
+        <option>Black</option>
+        <option>White</option>
+        <option>Blue</option>
+        <option>Red</option>
+        <option>Green</option>
+        <option>Yellow</option>
+        <option>Gray</option>
+        <option>Pink</option>
+        <option>Purple</option>
+      </select>
+
+      <input id="purchasePrice" type="number" placeholder="Purchase Price *">
+      <input id="sellingPrice" type="number" placeholder="Selling Price *">
+      <input id="quantity" type="number" placeholder="Quantity *">
+      <input id="unit" placeholder="Unit (e.g. pcs)">
+      <textarea id="description" placeholder="Description"></textarea>
+      <button class="btn-save" id="saveBtn">Save Product</button>
+      <button class="btn-reset" id="resetBtn">Clear</button>
+     
+     
+      <video id="video" autoplay playsinline  muted
+                                                      style="width:80%;height:80%; display: none;"></video>
+                             <canvas id="canvas" hidden></canvas>
+
+                             <p id="result"></p>
+           
+           
+      <button class="btn" id="scProduct">Scan_Product</button>
+    </div>
+
+    <h2 style="margin-top:30px;">📦 Product List</h2>
+    <input id="search" placeholder="Search by Name or SKU" style="width:100%;margin-bottom:10px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff;">
+    <table id="productTable">
+      <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Size</th>
+          <th>Color</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Brand</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+
+  
+    
+
+  </div>
+
+  <script>
+  	let BASEURL="http://localhost:8080"
+  
+    let products = JSON.parse(localStorage.getItem('products') || '[]');
+    const saveProducts = (product) =>{ 
+    	localStorage.setItem('products', JSON.stringify(products))
+    	
+    	
+    let saveProductApi=`${BASEURL}/app/v1/product/sprod`;
+        const responce= new Request(saveProductApi,{
+            method:"Post",
+            headers:{
+                'Accept' : 'application/json',
+                'Content-type': 'application/json; charset=UTF-8',
+                // 'Access-Control-Allow-Origin':"http://127.0.0.1:5500",
+                // Authorization : `Bearer ${token}`,
+                // "alg": "HS256",
+                // "typ": "JWT"
+            },
+            body:JSON.stringify({
+              
+               "id":product.id,
+               "prcbillno":product.pBillNo,
+                "sku":product.sku,
+                "name":product.name,
+                "category":product.category,
+                "brand":product.brand,
+                "size":product.size,
+                "colour":product.colour,
+                "purchasePrice":product.purchasePrice,
+                
+                
+                "sellingPrice":product.price,
+                "quantity":product.qty,
+                "unit":product.unit,
+                "description":product.description,
+                "createdAt":product.createdAt,
+                "updatedAt":product.updatedAt,
+                "isActive":product.isActive
+                
+                
+               
+        })
+        
+        
+
+    });
+        fetch(responce) 
+        		.then((responce)=>{
+		           let  j= responce.json();
+		            j.then((data)=>{	
+		               alert("Product Saved Successfully");
+		                console.log("Response : "+ data);
+
+                     // Convert to JSON and encode it
+                      const encoded = encodeURIComponent(JSON.stringify(data));
+                  // Now navigate safely
+                      window.location.href = `/htmlpage/qr_generator.html?data=${encoded}`;
+                      
+                    // cahke the Bill No in product page
+                 			 // document.getElementById("bill_NO").innerHTML = "Bill No : "+ data;         
+					})
+        		 }) 
+		        .catch((err)=>{
+		            console.log("Error"+ err);
+		        });
+    	
+    	
+    };
+
+    const tableBody = document.querySelector('#productTable tbody');
+    
+    const renderTable = () => {
+      const q = document.getElementById('search').value.toLowerCase();
+      tableBody.innerHTML = products
+        .filter(p => p.name.toLowerCase().includes(q) || p.sku.toLowerCase().includes(q))
+        .map((p, i) => `
+          <tr>
+            <td>${p.sku}</td>
+            <td>${p.name}</td>
+            <td>${p.category || '-'}</td>
+            <td>${p.size || '-'}</td>
+            <td>${p.colour || '-'}</td>
+            <td>₹${p.price}</td>
+            <td>${p.qty}</td>
+            <td>${p.brand || '-'}</td>
+            <td class="actions">
+              <button class="btn-edit" onclick="editProduct(${i})">Edit</button>
+              <button class="btn-delete" onclick="deleteProduct(${i})">Delete</button>
+            </td>
+          </tr>
+        `).join('');
+    };
+    renderTable();
+
+ 
+    
+    
+    document.getElementById('saveBtn').addEventListener('click', () => {
+      const p = {
+        sku: sku.value.trim(),
+        name: document.getElementById('name').value.trim(),
+        category: category.value,
+        brand: brand.value.trim(),
+        size: size.value,
+        colour: color.value,
+        purchasePrice: parseFloat(purchasePrice.value) || 0,
+        price: parseFloat(sellingPrice.value) || 0,
+        qty: parseInt(quantity.value) || 0,
+        unit: unit.value.trim(),
+        description: description.value.trim(),
+        pBillNo: document.getElementById('purchase-bill').value.trim()
+      };
+
+      console.log("product is : "+p.name) 
+      console.log("product is1 : "+p.sku) 
+      console.log("product is2 : "+JSON.stringify(p))  
+      
+      if (!p.sku || !p.name || !p.purchasePrice || !p.price || !p.qty) {
+        alert('Please fill all mandatory fields (*)');
+        return;
+      }
+      const existingIndex = products.findIndex(x => x.sku.toLowerCase() === p.sku.toLowerCase());
+      if (existingIndex >= 0) {
+        if (confirm('Product exists. Update existing record?')) {
+          products[existingIndex] = p;
+        } else return;
+      } else {
+        products.push(p);
+        
+        
+      }
+	      saveProducts(p);
+	      renderTable();
+	      alert('Product saved successfully');
+	      resetForm();
+      
+  
+      //location.href="qr_generator.html?data="+JSON.stringify(p);
+
+    });
+    
+    
+    
+    
+    
+
+    function resetForm() {
+      document.querySelectorAll('.form input, .form textarea, .form select').forEach(i => i.value = '');
+    }
+    document.getElementById('resetBtn').addEventListener('click', resetForm);
+    document.getElementById('search').addEventListener('input', renderTable);
+
+    function editProduct(i) {
+      const p = products[i];
+      for (const key in p) if (document.getElementById(key)) document.getElementById(key).value = p[key];
+    }
+   
+   
+   
+    function deleteProduct(i) {
+      if (confirm('Delete this product?')) {
+        products.splice(i, 1);
+        saveProducts();
+        renderTable();
+      }
+    }
+
+
+
+document.getElementById('add-new-product').addEventListener('click', ()=>{
+  let pBillNo=document.getElementById('purchase-bill').value;
+  if(pBillNo==''){
+    alert("Please enter Bill No to add Product");
+    return;
+  }
+      document.getElementById('addProductFormId').style.display='grid';
+});
+
+
+
+
+// ???????????????????????????????????????????????????
+// ======= QR and Barcode scanning using jsQR and QuaggaJS =======
+
+
+
+let stream = null, videoTrack = null
+const video = document.getElementById('video')
+
+let stream1=false;
+let scanning = false;
+let detected = false;
+
+async function startScan() {
+  stream1 = await navigator.mediaDevices.getUserMedia({
+    video: { facingMode: "environment" }
+  });
+
+  const video1 = document.getElementById(`video`);
+  video1.style.display="block"
+  video1.srcObject = stream1;
+  scanning = true;
+  detected = false;
+
+   startBarcodeDetector();
+   scanQRLoop();
+}
+
+/* ---------- QR DETECTION (HIGH PRIORITY) ---------- */
+function scanQRLoop() {
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+  const video1 = document.getElementById(`video`);
+
+  function tick() {
+    if (!scanning || detected) return;
+
+    if (video1.readyState === video.HAVE_ENOUGH_DATA) {
+      canvas.width = video1.videoWidth;
+      canvas.height = video1.videoHeight;
+      ctx.drawImage(video1, 0, 0);
+
+      const img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const qr = jsQR(img.data, canvas.width, canvas.height);
+
+      if (qr) {
+        detected = true;
+       		 handleResult(qr.data);
+        return;
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  tick();
+}
+
+/* ---------- BARCODE DETECTION ---------- */
+function startBarcodeDetector() {
+  Quagga.init({
+    inputStream: {
+      type: "LiveStream",
+      target: document.querySelector(`video`),
+      constraints: { facingMode: "environment" }
+    },
+    decoder: {
+      readers: [
+        "ean_reader",
+        "ean_8_reader",
+        "code_128_reader",
+        "code_39_reader",
+        "upc_reader"
+      ]
+    }
+  }, err => {
+    if (!err) Quagga.start();
+  });
+
+  Quagga.onDetected(data => {
+    if (detected) return;
+    detected = true;
+    	 handleResult( data.codeResult.code);
+  });
+}
+
+
+
+/* ---------- RESULT ---------- */
+function handleResult( value) {
+  document.getElementById("result").innerText =
+    `${value}`;
+/* alert("result : "+value) */
+  console.log("Scan value Is :"+ value);
+  
+  stopScan();  /* Stop the scanner */
+      	 fillProductData(value); 
+          
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+/*  ----------------------- This is Stop camera --------------------------  */
+function stopScan() {
+	const video1 = document.getElementById(`video`);
+	
+  scanning = false;
+  const tracks = video1.srcObject?.getTracks();
+  tracks?.forEach(t => t.stop());
+  video1.style.display="none"
+}
+
+
+
+
+
+ let startCamera=()=>{
+	 
+	 startScan();
+	
+
+ }
+
+
+
+
+
+    // scanProduct Btn logic
+  document.getElementById('scProduct').addEventListener('click', startCamera);
+
+    
+    
+    
+    
+    
+    
+  function scanProductFuntion(d){
+        let scanQRApi=`http://localhost:8080/app/v1/product/rcode/`+d;
+
+        const responce= new Request(scanQRApi,{
+            method:"get",
+        });
+            fetch(responce) 
+                            .then((responce)=>{
+                               let  j= responce.json();
+                                j.then((data)=>{
+                                   alert("product Csanned Successfully 1");
+                                     fillProductData(data);
+                                     
+                                }
+                            )
+                            })
+                            .catch((err)=>{
+                                console.log("Error"+ err);
+                            });
+      
+      }
+  
+  
+  
+  
+  
+  
+    function  fillProductData(data){
+        document.getElementById('name').value=data.name;
+        document.getElementById('sku').value=data;
+        document.getElementById('category').value=data.category;
+        document.getElementById('brand').value=data.brand;
+        document.getElementById('size').value=data.size;
+        document.getElementById('color').value=data.colour;
+        document.getElementById('purchasePrice').value=data.purchasePrice;
+        document.getElementById('sellingPrice').value=data.sellingPrice;
+        document.getElementById('quantity').value=data.quantity;
+        document.getElementById('unit').value=data.unit;
+        
+        document.getElementById('description').value=data.description;
+      };
+
+    // --------------------------------QrCode Logic---------------------------------------------------------
+ 
+ </script>
+</body>
+</html>

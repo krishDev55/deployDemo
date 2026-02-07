@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blinkit — Account (Demo)</title>
+  <style>
+    :root{
+      --bg:#0f0f11; /* page bg */
+      --card:#19181b; /* card bg */
+      --muted:#9aa0a6;
+      --accent:#f7d02c;
+      --surface:#121214;
+      --soft:#222226;
+      --glass: rgba(255,255,255,0.02);
+      --radius:14px;
+      --radius-sm:10px;
+      --shadow: 0 6px 20px rgba(0,0,0,0.6);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#0b0b0b 0%, #0f0f11 50%);color:#fff}
+
+    .frame{
+      width:360px; /* mobile preview width */
+      max-width:100%;
+      margin:18px auto;
+      border-radius:22px;
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.06) 100%);
+      box-shadow:var(--shadow);
+      border: 1px solid rgba(255,255,255,0.02);
+    }
+
+    header.top{
+      padding:14px 12px 18px;
+      background:linear-gradient(180deg, #4b360f 0%, rgba(0,0,0,0.0) 70%);
+      display:flex;align-items:center;gap:12px;
+    }
+
+    .back-btn{width:36px;height:36px;border-radius:10px;background:rgba(0,0,0,0.25);display:grid;place-items:center;cursor:pointer}
+    .avatar{
+      margin:0 auto;display:flex;flex-direction:column;align-items:center;padding:8px 0 18px
+    }
+    .avatar .circle{
+      width:78px;height:78px;border-radius:50%;background:linear-gradient(180deg,#f7d02c,#e89f1a);display:grid;place-items:center;font-weight:700;color:#1a0b00;box-shadow:0 6px 18px rgba(0,0,0,0.5)
+    }
+    .account-title{font-size:18px;font-weight:700;margin-top:10px;text-align:center}
+    .account-sub{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+    .content{padding:14px}
+    .banner{
+      background:linear-gradient(90deg, rgba(247,208,44,0.12), rgba(255,255,255,0.02));
+      border-radius:12px;padding:12px;display:flex;align-items:center;gap:12px;margin-bottom:14px;overflow:hidden
+    }
+    .banner .cake{width:64px;height:48px;border-radius:10px;background:linear-gradient(90deg,#643b09,#e8a93b);display:grid;place-items:center}
+    .banner .text{flex:1}
+    .small{font-size:13px;color:var(--muted)}
+    .cta{color:var(--accent);font-weight:700;margin-top:6px;font-size:13px}
+
+    .quick-actions{display:flex;gap:10px;margin-bottom:14px}
+    .action{flex:1;background:var(--card);padding:14px;border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer}
+    .action svg{opacity:0.95}
+    .action .label{font-size:13px;color:var(--muted)}
+
+    .panel{background:var(--card);padding:12px;border-radius:12px;margin-bottom:12px}
+    .row{display:flex;align-items:center;justify-content:space-between;padding:10px 4px}
+    .row .left{display:flex;gap:10px;align-items:center}
+    .pill{background:var(--soft);padding:8px;border-radius:10px;font-size:13px}
+
+    .switch{--w:50px;--h:28px;position:relative;width:var(--w);height:var(--h);border-radius:999px;background:#26262a;display:inline-block}
+    .switch input{display:none}
+    .thumb{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:all .18s cubic-bezier(.2,.9,.25,1)}
+    .switch.on{background:linear-gradient(90deg,var(--accent),#d09a15)}
+    .switch.on .thumb{left:calc(var(--w) - 25px)}
+
+    .list{background:var(--card);padding:12px;border-radius:12px}
+    .list-item{display:flex;align-items:center;justify-content:space-between;padding:12px;border-radius:10px;background:transparent;margin-bottom:8px}
+    .list-item .label{color:#e8e8ea}
+    .list-item .muted{color:var(--muted);font-size:13px}
+
+    .section-title{font-weight:700;margin:6px 0 8px}
+
+    /* small right chevron */
+    .chev{opacity:0.6}
+
+    /* animations */
+    .animate-appear{animation:fadeUp .35s both}
+    @keyframes fadeUp{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+
+    /* responsive tweaks */
+    @media (max-width:420px){.frame{width:100%;border-radius:0}}
+
+    /* helpful tiny UI for demo controls */
+    footer.demo-controls{padding:10px 12px;border-top:1px solid rgba(255,255,255,0.02);display:flex;gap:10px;align-items:center;justify-content:flex-end}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:10px;color:var(--muted);cursor:pointer}
+
+    /* subtle icon styles */
+    svg.icon{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6}
+
+  </style>
+</head>
+<body>
+
+<div class="frame" role="region" aria-label="Blinkit account demo">
+  <header class="top">
+    <div class="back-btn" title="Back" onclick="goBack()">
+      <!-- left arrow -->
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18l-6-6 6-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </header>
+
+  <div class="avatar">
+    <div class="circle">JD</div>
+    <div class="account-title">Your account</div>
+    <div class="account-sub">9765475504</div>
+  </div>
+
+  <div class="content">
+    <div class="banner animate-appear">
+      <div class="text">
+        <div class="small">Add your birthday</div>
+        <div class="cta">Enter details ▶</div>
+      </div>
+      <div class="cake"></div>
+    </div>
+
+    <div class="quick-actions">
+      <div class="action animate-appear" onclick="past_orderN('Your orders')">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3 3h18v4H3zM3 9h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z" stroke="#fff"/></svg>
+        <div class="label">Your orders</div>
+      </div>
+      <div class="action animate-appear" onclick="toast('Blinkit Money')">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v18" stroke="#fff"/><path d="M5 7h14" stroke="#fff"/></svg>
+        <div class="label">Blinkit Money</div>
+      </div>
+      <div class="action animate-appear" onclick="toast('Need help?')">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" stroke="#fff"/><path d="M9 9a3 3 0 0 1 6 0c0 2-3 2-3 5" stroke="#fff"/></svg>
+        <div class="label">Need help?</div>
+      </div>
+    </div>
+
+    <div class="panel animate-appear">
+      <div class="row">
+        <div class="left"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3v18" stroke="#fff"/></svg><div style="margin-left:8px">Appearance</div></div>
+        <div class="pill">DARK ▾</div>
+      </div>
+
+      <div class="row">
+        <div class="left"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12h18" stroke="#68c18a"/></svg><div style="margin-left:8px"><div style="font-weight:700">Hide sensitive items</div><div class="muted" style="font-size:12px">Sexual wellness, nicotine products and other sensitive items will be hidden</div></div></div>
+        <div>
+          <div id="sensitiveSwitch" class="switch" role="switch" aria-checked="false" tabindex="0" onclick="toggleSwitch(this)">
+            <input type="checkbox" aria-hidden="true">
+            <span class="thumb"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="list animate-appear">
+      <div class="section-title">Your information</div>
+      <div class="list-item" onclick="navigate('address')">
+        <div><svg class="icon" viewBox="0 0 24 24"><path d="M6 6h12v12H6z" stroke="#fff"/></svg><span style="margin-left:10px">Address book</span></div>
+        <div class="chev">▶</div>
+      </div>
+
+      <div class="list-item" onclick="navigate('bookmarks')">
+        <div><svg class="icon" viewBox="0 0 24 24"><path d="M6 3v18l6-4 6 4V3z" stroke="#fff"/></svg><span style="margin-left:10px">Bookmarked recipes</span></div>
+        <div class="chev">▶</div>
+      </div>
+
+      <div class="list-item" onclick="navigate('wishlist')">
+        <div><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9-8c-1.7-3.1.5-7 4-7 2.7 0 3.9 2.1 5 2.9 1.1-.8 2.3-2.9 5-2.9 3.5 0 5.7 3.9 4 7-2 3.5-9 8-9 8z" stroke="#fff"/></svg><span style="margin-left:10px">Your wishlist</span></div>
+        <div class="chev">▶</div>
+      </div>
+
+      <div class="list-item" onclick="navigate('gst')">
+        <div><svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16v12H4z" stroke="#fff"/></svg><span style="margin-left:10px">GST details</span></div>
+        <div class="chev">▶</div>
+      </div>
+
+      <div class="list-item" onclick="navigate('egift')">
+        <div><svg class="icon" viewBox="0 0 24 24"><path d="M12 3v18" stroke="#fff"/></svg><span style="margin-left:10px">E-gift cards</span></div>
+        <div class="chev">▶</div>
+      </div>
+
+    </div>
+
+    <div style="height:26px"></div>
+  </div>
+
+  <footer class="demo-controls">
+    <!-- reference to uploaded video for your convenience -->
+    <button class="btn-ghost" title="Open uploaded video (local)" onclick="openUploaded()">Open source video</button>
+    <button class="btn-ghost" onclick="resetDemo()">Reset</button>
+  </footer>
+</div>
+
+<script>
+  // Developer note: the uploaded video file path is available here on the server:
+  // /mnt/data/WhatsApp Video 2025-11-25 at 11.29.21 AM.mp4
+  // In your environment this will be converted to a URL automatically by the platform.
+
+  function goBack(){ 
+      window.history.back();
+  }
+ 
+ function toast(msg){
+    // simple toast
+
+    const t = document.createElement('div');
+    t.textContent = msg;
+    Object.assign(t.style,{
+                    position:'fixed',
+                    left:'50%',top:'20px',
+                    transform:'translateX(-50%)',
+                    background:'#111',
+                    padding:'10px 16px',
+                    borderRadius:'10px',
+                    boxShadow:'0 8px 30px rgba(0,0,0,0.6)',
+                    zIndex:9999});
+    document.body.appendChild(t);
+    setTimeout(()=>t.style.opacity=0,1400);
+    setTimeout(()=>t.remove(),2200);
+
+    // window.location.href = "";
+    //  window.location.href = 'bl_order_his.html';
+  }
+    function past_orderN(key){
+        // navigate to past orders
+        window.location.href = 'bl_order_his.html';
+    }
+
+  function navigate(key){ toast('Open '+key); }
+
+  // Switch behaviour
+  function toggleSwitch(el){
+    el.classList.toggle('on');
+    const on = el.classList.contains('on');
+    el.setAttribute('aria-checked', on);
+    // pretend to save preference
+    localStorage.setItem('hide_sensitive', on? '1' : '0');
+  }
+
+  // keyboard accessible toggling
+  document.addEventListener('keydown', (e)=>{
+    const sw = document.getElementById('sensitiveSwitch');
+    if(!sw) return;
+    if(document.activeElement === sw && (e.key === 'Enter' || e.key === ' ')){
+      e.preventDefault(); toggleSwitch(sw);
+    }
+  });
+
+  // initialize from localStorage
+  (function init(){
+    const s = localStorage.getItem('hide_sensitive');
+    if(s === '1') document.getElementById('sensitiveSwitch').classList.add('on');
+  })();
+
+  function resetDemo(){ localStorage.removeItem('hide_sensitive'); 
+                        document.getElementById('sensitiveSwitch').classList.remove('on'); 
+                        toast('Reset') }
+
+  function openUploaded(){
+    // platform will map this path to a downloadable URL in the environment where this runs.
+    const path = '/mnt/data/WhatsApp Video 2025-11-25 at 11.29.21 AM.mp4';
+    // try to open in new tab (may be blocked depending on host)
+    window.open(path, '_blank');
+  }
+</script>
+
+</body>
+</html>

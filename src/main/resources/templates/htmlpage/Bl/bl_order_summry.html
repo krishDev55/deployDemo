@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        h1 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .order-time {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .download-invoice {
+            color: #ff6b00;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        section {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        h2 {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .item-details {
+            flex: 1;
+        }
+        
+        .item-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .item-quantity {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .item-price {
+            text-align: right;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .discounted-price {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        tr {
+            border-bottom: 1px solid #eee;
+        }
+        
+        td {
+            padding: 8px 0;
+        }
+        
+        td:last-child {
+            text-align: right;
+        }
+        
+        .bill-total {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .order-info {
+            margin-bottom: 10px;
+        }
+        
+        .info-label {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .info-value {
+            font-weight: bold;
+            margin-top: 3px;
+        }
+        
+        .help-section {
+            margin-top: 20px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .checkbox-item input {
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        .checkbox-text {
+            font-size: 14px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .repeat-order {
+            background-color: #ff6b00;
+            color: white;
+            border: none;
+            flex: 1;
+            margin-right: 10px;
+        }
+        
+        .view-cart {
+            background-color: white;
+            color: #ff6b00;
+            border: 1px solid #ff6b00;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Order summary</h1>
+            <div class="order-time">Arrived at 7:24 pm</div>
+            <a href="#" class="download-invoice">Download Invoice</a>
+        </header>
+        
+        <section>
+            <h2>3 items in this order</h2>
+            
+            <div class="item">
+                <div class="item-details">
+                    <div class="item-name">Yojana Poultry Power White Eggs</div>
+                    <div class="item-quantity">12 pieces x 1</div>
+                </div>
+                <div class="item-price">
+                    <div class="original-price">¥112</div>
+                    <div class="discounted-price">¥107</div>
+                </div>
+            </div>
+            
+            <div class="item">
+                <div class="item-details">
+                    <div class="item-name">Fortune Sunlite Refined Sunflower Oil</div>
+                    <div class="item-quantity">800 g x 2</div>
+                </div>
+                <div class="item-price">
+                    <div class="original-price">¥370</div>
+                    <div class="discounted-price">¥300</div>
+                </div>
+            </div>
+            
+            <div class="item">
+                <div class="item-details">
+                    <div class="item-name">Whole Farm Premium Kolhapuri Jaggery</div>
+                    <div class="item-quantity">900 g x 1</div>
+                </div>
+                <div class="item-price">
+                    <div class="original-price">¥105</div>
+                    <div class="discounted-price">¥67</div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>How were your ordered items?</h2>
+            
+            <h3>Bill details</h3>
+            <table>
+                <tr>
+                    <td>MRP</td>
+                    <td>¥587</td>
+                </tr>
+                <tr>
+                    <td>Product discount</td>
+                    <td>-¥113</td>
+                </tr>
+                <tr>
+                    <td>Item total</td>
+                    <td>¥474</td>
+                </tr>
+                <tr>
+                    <td>Handling charge</td>
+                    <td>+¥11</td>
+                </tr>
+                <tr>
+                    <td>Delivery charges</td>
+                    <td>FREE</td>
+                </tr>
+                <tr>
+                    <td class="bill-total">Bill total</td>
+                    <td class="bill-total">¥485</td>
+                </tr>
+            </table>
+        </section>
+        
+        <section>
+            <h2>Order details</h2>
+            
+            <div class="order-info">
+                <div class="info-label">Order id</div>
+                <div class="info-value">ORD15325334347</div>
+            </div>
+            
+            <div class="order-info">
+                <div class="info-label">Payment</div>
+                <div class="info-value">Paid Online</div>
+            </div>
+            
+            <div class="order-info">
+                <div class="info-label">Deliver to</div>
+                <div class="info-value">Shiv Shrusti Apartment, 101, 1 floor, Front of Chikhali bus stop</div>
+            </div>
+            
+            <div class="order-info">
+                <div class="info-label">Order placed</div>
+                <div class="info-value">placed on Sun, 09 Nov'25, 7:06 PM</div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Need help with your order?</h2>
+            
+            <div class="help-section">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="chat-help">
+                    <label for="chat-help" class="checkbox-text">
+                        Chat with us<br>
+                        <span style="color: #666;">About any issues related to your order</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="repeat-order">Repeat Order</button>
+                <button class="view-cart">VIEW CART ON NEXT STEP</button>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
